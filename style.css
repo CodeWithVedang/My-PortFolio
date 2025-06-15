@@ -199,66 +199,75 @@ span{
 .portfolio h2{
     margin-bottom: 4rem;
 }
-.portfolio-container{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+/* Portfolio Section Styles for vsproj-container */
+.vsproj-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 2.5rem;
 }
-.portfolio-container .portfolio-box{
-    position: relative;
-    border-radius: 2rem;
-    box-shadow: 0 0 1rem var(--bg-color);
-    overflow: hidden;
-    display: flex;
-}
-.portfolio-box img{
-    width: 100%;
-    transition: .5s ease;
-    opacity: 0.7;
-}
-.portfolio-box:hover img{
-    transform: scale(1.1);
-}
-.portfolio-box .portfolio-layer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:linear-gradient(rgba(0,0,0,0.1),var(--main-color));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+.vsproj-box {
+    flex: 1 1 30rem; /* Match service-box responsive sizing */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-padding: 0 4rem;
-transform: translateY(100%);
-transition: .5s ease;
 }
-.portfolio-box:hover .portfolio-layer{
-    transform: translateY(0);
+
+.vsproj-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.portfolio-layer h4{
-    font-size: 3rem;
+
+.vsproj-layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
-.portfolio-layer p{
-    font-size: 1.6rem;
-    margin: .3rem 0 1rem;
+
+/* Project icon styling */
+.vsproj-icon {
+    font-size: 40px;
+    color: #00eeff; /* Matches Services section icons */
 }
-.portfolio-layer a{
- justify-content: center;
-    display: inline-flex;
-    align-items:center ;
-    width: 5rem;
-    height: 5rem;
-    background: var(--text-color);
-    border-radius: 50%;
+
+/* Project title styling */
+.vsproj-layer h4 {
+    font-size: 24px;
+    color: #333; /* Dark color for visibility on white background */
+    margin: 0;
 }
-.portfolio-layer a i{
-    font-size: 2rem;
-    color: var(--snd-bf-color);
+
+/* Project description styling */
+.vsproj-layer p {
+    font-size: 16px;
+    color: #666; /* Dark color for visibility on white background */
+    margin: 0;
+    line-height: 1.5;
 }
+
+/* Project button styling */
+.vsproj-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00eeff; /* Matches Services section */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.vsproj-btn:hover {
+    background: #00ccdd; /* Slightly darker cyan on hover */
+}
+
 .contact h2{
     margin-bottom: 3rem;
 }
@@ -399,14 +408,14 @@ box-shadow: 0 0 1rem var(--main-color) ;
     .portfolio h2{
         margin-bottom:3rem ;
     }
-    .portfolio-container{
-        grid-template-columns: repeat(2,1fr);
+    .vsproj-container {
+        flex-direction: column;
+    }
+    .vsproj-box {
+        flex: 1 1 100%; /* Full width on smaller screens */
     }
 }
 @media(max-width:617px){
-    .portfolio-container{
-        grid-template-columns:1fr;
-    }
     .home-img img{
         width: 80vw;
         margin-top:8rem ;
@@ -422,84 +431,5 @@ box-shadow: 0 0 1rem var(--main-color) ;
     }
     .contact form .input-box input{
         width: 100%;
-    }
-}
-
-/* Updated Portfolio Section Styles for vsproj-container */
-.portfolio .vsproj-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 2.5rem !important;
-}
-
-.portfolio .vsproj-container .vsproj-box {
-    background: #fff !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-    padding: 20px !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    text-align: center !important;
-    margin: 10px !important;
-    flex: 1 1 30rem !important; /* Match service-box responsive sizing */
-}
-
-.portfolio .vsproj-container .vsproj-box:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
-}
-
-.portfolio .vsproj-container .vsproj-box .vsproj-layer {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 15px !important;
-}
-
-/* Project icon styling */
-.portfolio .vsproj-container .vsproj-box .vsproj-layer .vsproj-icon {
-    font-size: 40px !important;
-    color: #00eeff !important; /* Matches Services section icons */
-}
-
-/* Project title styling */
-.portfolio .vsproj-container .vsproj-box .vsproj-layer h4 {
-    font-size: 24px !important;
-    color: #333 !important; /* Dark color for visibility on white background */
-    margin: 0 !important;
-}
-
-/* Project description styling */
-.portfolio .vsproj-container .vsproj-box .vsproj-layer p {
-    font-size: 16px !important;
-    color: #666 !important; /* Dark color for visibility on white background */
-    margin: 0 !important;
-    line-height: 1.5 !important;
-}
-
-/* Project button styling */
-.portfolio .vsproj-container .vsproj-box .vsproj-layer .vsproj-btn {
-    display: inline-block !important;
-    padding: 10px 20px !important;
-    background: #00eeff !important; /* Matches Services section */
-    color: #fff !important;
-    text-decoration: none !important;
-    border-radius: 5px !important;
-    font-weight: 500 !important;
-    transition: background 0.3s ease !important;
-}
-
-.portfolio .vsproj-container .vsproj-box .vsproj-layer .vsproj-btn:hover {
-    background: #00ccdd !important; /* Slightly darker cyan on hover */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .portfolio .vsproj-container {
-        flex-direction: column !important;
-    }
-    .portfolio .vsproj-container .vsproj-box {
-        flex: 1 1 100% !important; /* Full width on smaller screens */
     }
 }

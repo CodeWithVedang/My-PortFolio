@@ -44,11 +44,11 @@ if not projects:
     portfolio_container.append(placeholder)
 else:
     for project in projects:
-        project_div = soup.new_tag("div", class_="vsproj-box")
-        portfolio_layer = soup.new_tag("div", class_="vsproj-layer")
+        project_div = soup.new_tag("div", **{"class": "vsproj-box"})  # Ensure proper 'class' attribute
+        portfolio_layer = soup.new_tag("div", **{"class": "vsproj-layer"})
         
         # Project logo (Bootstrap icon)
-        icon = soup.new_tag("i", class_="bi bi-code-slash vsproj-icon")
+        icon = soup.new_tag("i", **{"class": "bi bi-code-slash vsproj-icon"})
         portfolio_layer.append(icon)
         
         # Project title
@@ -62,7 +62,7 @@ else:
         portfolio_layer.append(p)
         
         # Project button
-        button = soup.new_tag("a", href=project["link"], class_="btn vsproj-btn")
+        button = soup.new_tag("a", href=project["link"], **{"class": "btn vsproj-btn"})
         button.string = "View Project"
         portfolio_layer.append(button)
         
