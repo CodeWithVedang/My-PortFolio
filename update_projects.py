@@ -66,6 +66,12 @@ with open("index.html", "w", encoding="utf-8") as file:
 
 # Git operations
 repo = git.Repo(".")
+repo.config_writer().set_value("user", "name", "CodeWithVedang").release()
+repo.config_writer().set_value("user", "email", "shelatkarvedang2@gmail.com").release()
+g_token = os.environ.get("G_TOKEN")
+remote_url = f"https://CodeWithVedang:{g_token}@github.com/CodeWithVedang/My-PortFolio.git"
+repo.remote(name="origin").set_url(remote_url)
+
 repo.git.add("index.html")
 if repo.is_dirty():
     repo.git.commit(m=f"Update projects section - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")

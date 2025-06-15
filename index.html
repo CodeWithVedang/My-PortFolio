@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortFolio</title>
+    <!--Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--Typing Animation script-->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/scrollreveal">
-    <link rel="stylesheet" href="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedang Shelatkar</title>
 </head>
 <body>
-    <header class="header">
+    <!-- HEADER SECTION-->
+     <header class="header">
         <a href="#" class="logo">PortFolio</a>
         <i class="fa-solid fa-bars" id="menu-icon"></i>
         <nav class="navbar">
@@ -20,118 +23,129 @@
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </nav>
-    </header>
-
+     </header>
+    
+    <!--Home Section-->
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hi, Myself</h3>
-            <h1>Vedang Shelatkar</h1>
-            <h3>And I'm a <span class="text"></span></h3>
-            <p>with extensive experience for over 3 years.<br>
-                Expertise is to create and website design, Frontend Design, and many more...</p>
+            <h3>Vedang Shelatkar</h3>
+            <h3>And I'm a <span class="text"></span> </h3>
+            <p>  with extensive experience for over 3 years.<br>
+                Expertise is to create and website design, Frontend Design, and many more...
+            </p>
             <div class="social-media">
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/vedang-shelatkar/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://wa.me/917843013109?text=hello%20I%20am%20From%20Your%20Portfolio"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/__vedangs__"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/CodeWithVedang"><i class="fa-brands fa-github"></i></a>
             </div>
-            <a href="#" class="btn">Download CV</a>
+            <a href="PDF/MyCv.pdf" class="btn" download>Download CV</a>
         </div>
         <div class="home-img">
-            <img src="images/home.png" alt="">
+            <img src="Assets/profile.png" >
         </div>
     </section>
-
+    <!--About Section-->
     <section class="about" id="about">
         <div class="about-image">
-            <img src="images/about.png" alt="">
+            <img src="Assets/profile.png" alt="">
         </div>
         <div class="about-content">
             <h2 class="heading">About <span>Me</span></h2>
             <h3>Full Stack Developer</h3>
-            <p>Strong background in Website Development, Web Design, RPA developer, Frontend Development.<br>
-                Experienced in developing innovative solutions and contributing to open-source projects.<br>
-                Proficient in programming languages or tools, e.g., Python, JavaScript, etc.<br>
-                For more details on my work and professional connections, please visit my <a href="#">Link Profile</a>,
-                which includes my GitHub and LinkedIn profiles...</p>
-            <a href="#" class="btn">Read More</a>
+            <p> Strong background in Website Development, Web Design, RPA developer,Frontend Developement.
+            <br> Experienced in developing innovative solutions and contributing to open-source projects. 
+             <br>Proficient in  programming languages or tools, e.g., Python, JavaScript, etc.
+             For more details on my work and professional connections, please visit my Link Profile,
+             which includes my GitHub and LinkedIn profiles...</p>
+             <a href="https://linktr.ee/__vedangs__" class="btn">Read More</a>
         </div>
     </section>
-
-    <section class="service" id="service">
-        <h2 class="heading">My <span>Services</span></h2>
-        <div class="service-container">
-            <div class="service-box">
-                <i class="fa-solid fa-code"></i>
-                <h3>UI/UX Design</h3>
-                <p>Create intuitive and engaging user interfaces and experiences.</p>
-                <ul>
-                    <li>User Research & Analysis</li>
-                    <li>Wireframing & Prototyping</li>
-                    <li>Visual Design</li>
-                    <li>Usability Testing</li>
-                </ul>
-                <a href="#" class="btn">Coming Soon!</a>
-            </div>
-            <div class="service-box">
-                <i class="fa-solid fa-globe"></i>
-                <h3>Website Design</h3>
-                <p>Build responsive, modern websites using the latest web technologies.</p>
-                <ul>
-                    <li>Custom Website Development</li>
-                    <li>Responsive Design</li>
-                    <li>SEO Optimization</li>
-                    <li>Performance Tuning</li>
-                </ul>
-                <a href="#" class="btn">Coming Soon!</a>
-            </div>
-            <div class="service-box">
-                <i class="fa-brands fa-android"></i>
-                <h3>App Development in Kotlin</h3>
-                <p>Develop robust and scalable mobile applications using Kotlin.</p>
-                <ul>
-                    <li>Native Android Development</li>
-                    <li>Backend Integration</li>
-                    <li>App Testing & Debugging</li>
-                    <li>Maintenance & Updates</li>
-                </ul>
-                <a href="#" class="btn">Coming Soon!</a>
-            </div>
+    
+    <!--Services Section-->
+<section class="service" id="service">
+<h2 class="heading">My <span>Services</span></h2>
+<div class="service-container">
+    <div class="service-box">
+        
+            <i class="fa-brands fa-figma" style='color:#00eeff'  ></i>
+            <h3>UI/UX Design</h3>
+        
+            <p>Create intuitive and engaging user interfaces and experiences. <br>
+                -User Research & Analysis<br>
+                -Wireframing & Prototyping<br>
+                -Visual Design<br>
+                -Usability Testing</p>
+        
+            <a href="#" class="btn">Comming Soon !</a>
         </div>
-    </section>
 
-    <section class="portfolio" id="portfolio">
+        <div class="service-box">
+            <i class="fa-solid fa-globe" style='color:#00eeff'  ></i>
+            <h3>Website Design</h3>
+        
+            <p>Build responsive, modern websites using the latest web technologies.<br>
+                -Custom Website Development <br>
+                -Responsive Design <br>
+                -SEO Optimization <br>
+                -Performance Tuning</p>
+        
+            <a href="#" class="btn">Comming Soon !</a>
+        </div>
+
+        <div class="service-box">
+            <i class="fa-brands fa-android" style='color:#00eeff'  ></i>
+            <h3>App Development in Kotlin</h3>
+        
+            <p> Develop robust and scalable mobile applications using Kotlin <br>
+                -Native Android Development<br>
+                -Backend Integration <br>
+                -App Testing & Debugging <br>
+                -Maintenance & Updates</p>
+        
+            <a href="#" class="btn">Comming Soon !</a>
+        </div>
+    </div>
+</div>
+</section>
+    <!--PortFolio Section-->
+ <section class="portfolio" id="portfolio">
         <h2 class="heading">Latest <span>Projects</span></h2>
         <div class="portfolio-container">
             <!-- Projects will be dynamically inserted here by the Python script -->
         </div>
     </section>
 
-    <section class="contact" id="contact">
+       <!--Contact Section-->
+       <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
-        <form action="#" name="contact-form">
+        <form action="https://script.google.com/macros/s/AKfycbw0Y1lCW2yWKIbt5-hAQCZffYRbbICHnpObIhJlVTWs-vBMj1c-3IIHZCilQdkbPi_Y/exec" name="contact-form">
             <div class="input-box">
-                <input type="text" name="name" placeholder="Full Name">
-                <input type="email" name="email" placeholder="Email Address">
+                <input type="text" placeholder="Full Name" name="your-name">
+                <input type="email" placeholder="Email Address" name="your-email">
             </div>
             <div class="input-box">
-                <input type="number" name="phone" placeholder="Mobile Number">
-                <input type="text" name="subject" placeholder="Email Subject">
+                <input type="number" placeholder="Mobile Number" name="your-number">
+                <input type="text" placeholder="Email Subject"  name="your-subject">
             </div>
-            <textarea name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
-            <input type="submit" value="Send Message" class="btn">
+            <textarea  id="" cols="30" rows="10" placeholder="Your Message"  name="your-message"></textarea>
+            <input type="submit" value="Send Message" class="btn" value="submit" id="submit">
         </form>
-    </section>
+       </section>
+       <!--Footer Section-->
 
-    <footer class="footer">
+       <footer class="footer">
         <div class="footer-text">
-            <p>Copyright &copy; 2024 by @CodeWithVedang | All Rights Reserved.</p>
+            <p>Copyright © 2024 by @CodeWithVedang | All Rights Reserved.</p>
         </div>
         <div class="footer-iconTop">
             <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
         </div>
-    </footer>
+       </footer>
+     <script src="script.js"></script>
+         <script src="https://unpkg.com/scrollreveal"></script>
 
-    <script src="script.js"></script>
+     <script src="https://unpkg.com/scrollreveal"></script>
 </body>
 </html>
