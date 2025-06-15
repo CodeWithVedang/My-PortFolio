@@ -37,31 +37,37 @@ portfolio_container = soup.find("div", class_="vsproj-container")
 portfolio_container.clear()  # Clear existing projects
 
 # Add new project entries
-for project in projects:
-    project_div = soup.new_tag("div", class_="vsproj-box")
-    portfolio_layer = soup.new_tag("div", class_="vsproj-layer")
-    
-    # Project logo (Bootstrap icon)
-    icon = soup.new_tag("i", class_="bi bi-code-slash vsproj-icon")
-    portfolio_layer.append(icon)
-    
-    # Project title
-    h4 = soup.new_tag("h4")
-    h4.string = project["name"]
-    portfolio_layer.append(h4)
-    
-    # Project description
-    p = soup.new_tag("p")
-    p.string = project["description"]
-    portfolio_layer.append(p)
-    
-    # Project button
-    button = soup.new_tag("a", href=project["link"], class_="btn vsproj-btn")
-    button.string = "View Project"
-    portfolio_layer.append(button)
-    
-    project_div.append(portfolio_layer)
-    portfolio_container.append(project_div)
+if not projects:
+    # Fallback if no projects are found
+    placeholder = soup.new_tag("p")
+    placeholder.string = "No projects available at the moment."
+    portfolio_container.append(placeholder)
+else:
+    for project in projects:
+        project_div = soup.new_tag("div", class_="vsproj-box")
+        portfolio_layer = soup.new_tag("div", class_="vsproj-layer")
+        
+        # Project logo (Bootstrap icon)
+        icon = soup.new_tag("i", class_="bi bi-code-slash vsproj-icon")
+        portfolio_layer.append(icon)
+        
+        # Project title
+        h4 = soup.new_tag("h4")
+        h4.string = project["name"]
+        portfolio_layer.append(h4)
+        
+        # Project description
+        p = soup.new_tag("p")
+        p.string = project["description"]
+        portfolio_layer.append(p)
+        
+        # Project button
+        button = soup.new_tag("a", href=project["link"], class_="btn vsproj-btn")
+        button.string = "View Project"
+        portfolio_layer.append(button)
+        
+        project_div.append(portfolio_layer)
+        portfolio_container.append(project_div)
 
 # Write updated HTML back to index.html
 with open("index.html", "w", encoding="utf-8") as file:
