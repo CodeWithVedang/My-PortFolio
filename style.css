@@ -211,7 +211,7 @@ span{
 
 .vsproj-box {
     flex: 1 1 30rem; /* Match service-box responsive sizing */
-    background: #fff;
+    background: #2d365b;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -240,14 +240,14 @@ span{
 /* Project title styling */
 .vsproj-layer h4 {
     font-size: 24px;
-    color: #333; /* Dark color for visibility on white background */
+    color: #ffffff; /* Dark color for visibility on white background */
     margin: 0;
 }
 
 /* Project description styling */
 .vsproj-layer p {
     font-size: 16px;
-    color: #666; /* Dark color for visibility on white background */
+    color: #ffffff; /* Dark color for visibility on white background */
     margin: 0;
     line-height: 1.5;
 }
