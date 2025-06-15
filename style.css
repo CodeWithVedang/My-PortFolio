@@ -446,7 +446,7 @@ box-shadow: 0 0 1rem var(--main-color) ;
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
 
 /* Portfolio box styling */
-.pors-box {
+.vsproj-box {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -456,12 +456,12 @@ box-shadow: 0 0 1rem var(--main-color) ;
     margin: 10px;
 }
 
-.pors-box:hover {
+.vsproj-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.pors-layer {
+.vsproj-layer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -469,20 +469,20 @@ box-shadow: 0 0 1rem var(--main-color) ;
 }
 
 /* Project icon styling */
-.project-icon {
+.vsproj-icon {
     font-size: 40px;
     color: #00eeff; /* Matches Services section icons */
 }
 
 /* Project title styling */
-.pors-layer h4 {
+.vsproj-layer h4 {
     font-size: 24px;
     color: #333;
     margin: 0;
 }
 
 /* Project description styling */
-.pors-layer p {
+.vsproj-layer p {
     font-size: 16px;
     color: #666;
     margin: 0;
@@ -490,7 +490,7 @@ box-shadow: 0 0 1rem var(--main-color) ;
 }
 
 /* Project button styling */
-.porsproject-btn {
+.vsproj-btn {
     display: inline-block;
     padding: 10px 20px;
     background: #00eeff; /* Matches Services section */
@@ -501,6 +501,6 @@ box-shadow: 0 0 1rem var(--main-color) ;
     transition: background 0.3s ease;
 }
 
-.porsproject-btn:hover {
+.vsproj-btn:hover {
     background: #00ccdd; /* Slightly darker cyan on hover */
 }
