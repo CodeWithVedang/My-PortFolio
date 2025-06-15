@@ -26,7 +26,7 @@ jobs:
       - name: Run update script
         env:
           GOOGLE_SHEET_CREDENTIALS: ${{ secrets.GOOGLE_SHEET_CREDENTIALS }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          G_TOKEN: ${{ secrets.G_TOKEN }}
         run: python update_projects.py
 
       - name: Commit and push changes
@@ -37,4 +37,4 @@ jobs:
           git commit -m "Automated project section update" || echo "No changes to commit"
           git push origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          G_TOKEN: ${{ secrets.G_TOKEN }}
