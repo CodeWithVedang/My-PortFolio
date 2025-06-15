@@ -41,6 +41,10 @@ for project in projects:
     project_div = soup.new_tag("div", class_="portfolio-box")
     portfolio_layer = soup.new_tag("div", class_="portfolio-layer")
     
+    # Project logo (Bootstrap icon)
+    icon = soup.new_tag("i", class_="bi bi-code-slash project-icon")
+    portfolio_layer.append(icon)
+    
     # Project title
     h4 = soup.new_tag("h4")
     h4.string = project["name"]
@@ -51,11 +55,10 @@ for project in projects:
     p.string = project["description"]
     portfolio_layer.append(p)
     
-    # Project link
-    a = soup.new_tag("a", href=project["link"])
-    i = soup.new_tag("i", class_="fa-solid fa-up-right-from-square")
-    a.append(i)
-    portfolio_layer.append(a)
+    # Project button
+    button = soup.new_tag("a", href=project["link"], class_="btn project-btn")
+    button.string = "View Project"
+    portfolio_layer.append(button)
     
     project_div.append(portfolio_layer)
     portfolio_container.append(project_div)

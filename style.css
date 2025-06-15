@@ -440,3 +440,67 @@ box-shadow: 0 0 1rem var(--main-color) ;
         width: 100%;
     }
 }
+/* Add to existing style.css */
+
+/* Ensure Bootstrap Icons are included */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
+
+/* Portfolio box styling */
+.portfolio-box {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 10px;
+}
+
+.portfolio-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Project icon styling */
+.project-icon {
+    font-size: 40px;
+    color: #00eeff; /* Matches Services section icons */
+}
+
+/* Project title styling */
+.portfolio-layer h4 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+/* Project description styling */
+.portfolio-layer p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Project button styling */
+.project-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00eeff; /* Matches Services section */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.project-btn:hover {
+    background: #00ccdd; /* Slightly darker cyan on hover */
+}
