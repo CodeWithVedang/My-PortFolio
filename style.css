@@ -446,7 +446,7 @@ box-shadow: 0 0 1rem var(--main-color) ;
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
 
 /* Portfolio box styling */
-.portfolio-box {
+.pors-box {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -456,12 +456,12 @@ box-shadow: 0 0 1rem var(--main-color) ;
     margin: 10px;
 }
 
-.portfolio-box:hover {
+.pors-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.portfolio-layer {
+.pors-layer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -475,14 +475,14 @@ box-shadow: 0 0 1rem var(--main-color) ;
 }
 
 /* Project title styling */
-.portfolio-layer h4 {
+.pors-layer h4 {
     font-size: 24px;
     color: #333;
     margin: 0;
 }
 
 /* Project description styling */
-.portfolio-layer p {
+.pors-layer p {
     font-size: 16px;
     color: #666;
     margin: 0;
@@ -490,7 +490,7 @@ box-shadow: 0 0 1rem var(--main-color) ;
 }
 
 /* Project button styling */
-.project-btn {
+.porsproject-btn {
     display: inline-block;
     padding: 10px 20px;
     background: #00eeff; /* Matches Services section */
@@ -501,6 +501,6 @@ box-shadow: 0 0 1rem var(--main-color) ;
     transition: background 0.3s ease;
 }
 
-.project-btn:hover {
+.porsproject-btn:hover {
     background: #00ccdd; /* Slightly darker cyan on hover */
 }

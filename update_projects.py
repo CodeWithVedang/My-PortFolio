@@ -33,13 +33,13 @@ with open("index.html", "r", encoding="utf-8") as file:
     soup = BeautifulSoup(file, "html.parser")
 
 # Find portfolio container
-portfolio_container = soup.find("div", class_="portfolio-container")
+portfolio_container = soup.find("div", class_="pors-container")
 portfolio_container.clear()  # Clear existing projects
 
 # Add new project entries
 for project in projects:
-    project_div = soup.new_tag("div", class_="portfolio-box")
-    portfolio_layer = soup.new_tag("div", class_="portfolio-layer")
+    project_div = soup.new_tag("div", class_="pors-box")
+    portfolio_layer = soup.new_tag("div", class_="pors-layer")
     
     # Project logo (Bootstrap icon)
     icon = soup.new_tag("i", class_="bi bi-code-slash project-icon")
@@ -56,7 +56,7 @@ for project in projects:
     portfolio_layer.append(p)
     
     # Project button
-    button = soup.new_tag("a", href=project["link"], class_="btn project-btn")
+    button = soup.new_tag("a", href=project["link"], class_="btn porsproject-btn")
     button.string = "View Project"
     portfolio_layer.append(button)
     
