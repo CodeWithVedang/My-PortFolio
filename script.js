@@ -97,7 +97,7 @@ ScrollReveal().reveal('.home-img, .service-container, .vsproj-container, .contac
 ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
 ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw0Y1nCW2yWKIbt5PKhAQCZffYRbbICHnpObIhJsVTWs-vBMj1c-3IIHZ5LILQdkbPi_Y/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx9X_qUdIullPJ5Ze4fyLda2aClKIeCI4fRzVTIeeJ8WSI8ykm3fu2cSLLDNuVoeSDH/exec';
 
 const form = document.forms['contact-form'];
 
