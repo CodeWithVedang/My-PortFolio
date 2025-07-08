@@ -97,17 +97,28 @@ ScrollReveal().reveal('.home-img, .service-container, .vsproj-container, .contac
 ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
 ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw0Y1nCW2yWKIbt5PKhAQCZffYRbbICHnpObIhJsVTWs-vBMj1c-3IIHZ5LILQdkbPi_Y/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwXud7R_oGowFtrC12r3oVAH1iQtJALOI7s9xsqpRtBTcPT_kaWQXwWoWPl9G7WzI7v/exec';
 
 const form = document.forms['contact-form'];
 
 if (form) {
     form.addEventListener('submit', e => {
         e.preventDefault();
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => alert("Thank you! your form is submitted successfully."))
-            .then(() => { window.location.reload(); })
-            .catch(error => console.error('Error!', error.message));
+        const formData = new FormData(form);
+        formData.append('sheetName', 'Contact-Form'); // Specify the sheet name
+        fetch(scriptURL, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Thank you! Your form is submitted successfully.");
+                window.location.reload();
+            } else {
+                throw new Error('Form submission failed.');
+            }
+        })
+        .catch(error => console.error('Error!', error.message));
     });
 }
 
