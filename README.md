@@ -1,5 +1,3 @@
-Here’s your well-formatted version, ready for clean copy-paste:
-
 # Portfolio Website
 
 A personal portfolio site to showcase skills, services, and projects in Full Stack Development, Frontend Development, and RPA. Built using HTML, CSS, JavaScript, with project automation handled via Python and Google Sheets.
