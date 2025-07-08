@@ -199,7 +199,12 @@ span{
 .portfolio h2{
     margin-bottom: 4rem;
 }
+/* Add to the end of style.css or after the portfolio section */
 
+.portfolio-btn {
+    text-align: center;
+    margin-top: 4rem;
+}
 /* Portfolio Section Styles for vsproj-container */
 .vsproj-container {
     display: flex;
