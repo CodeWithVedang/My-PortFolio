@@ -1,69 +1,18 @@
-var typed=new Typed(".text",{
-    strings:["Frontend Developer","RPA Developer","Website Designer","Web Developer"],
-    typeSpeed:100,
-    backSpeed:100,
-    backDelay:1000,
-    loop:true
-})
-
-let menuIcon=document.querySelector('#menu-icon');
-let navbar=document.querySelector('.navbar');
-
-menuIcon.onclick=()=>{
-    menuIcon.classList.toggle('fa-xmark');
-    navbar.classList.toggle('active')
-}
-
-let sections=document.querySelectorAll('section');
-let navLinks=document.querySelectorAll('header nav a');
-window.onscroll=()=>{
-    sections.forEach(sec=>{
-        let top=window.scrollY;
-        let offset=sec.offsetTop -150;
-        let height=sec.offsetHeight;
-        let id=sec.getAttribute('id');
-
-        if(top>=offset && top<offset+height){
-            navLinks.forEach.apply(links=>{
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*='+id+']').classList.add('active');
-            });
-        };
-    });
-    let header=document.querySelector('header');
-    header.classList.toggle('sticky',window.scrollY>100);
-    menuIcon.classList.remove('fa-xmark');
-    navbar.classList.remove('active')
-};
-ScrollReveal({
-    distance:'80px',
-    duration:2000,
-    delay:200,
-});
-ScrollReveal().reveal('.home-content, heading', { origin: 'top' });
-ScrollReveal().reveal('.home-img, service-container, .portfolio-box, .contact form', { origin: 'bottom' });
-ScrollReveal().reveal('.home-contact h1, .about-img', { origin: 'left' });
-ScrollReveal().reveal('.home-contact p, .about-content', { origin: 'right' });
-
-
-
-
-
 var typed = new Typed(".text", {
     strings: ["Frontend Developer", "RPA Developer", "Website Designer", "Web Developer"],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
     loop: true
-})
+});
 
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bi-x');
+    menuIcon.classList.toggle('fa-xmark');
     navbar.classList.toggle('active');
-}
+};
 
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
@@ -74,7 +23,7 @@ window.onscroll = () => {
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
-        if (top >= offset && top < offset + id) {
+        if (top >= offset && top < offset + height) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 document.querySelector('header nav a[href*=' + id + ']')?.classList.add('active');
@@ -83,7 +32,7 @@ window.onscroll = () => {
     });
     let header = document.querySelector('header');
     header.classList.toggle('sticky', window.scrollY > 100);
-    menuIcon.classList.remove('bi-x');
+    menuIcon.classList.remove('fa-xmark');
     navbar.classList.remove('active');
 };
 
@@ -98,7 +47,6 @@ ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
 ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbx9X_qUdIullPJ5Ze4fyLda2aClKIeCI4fRzVTIeeJ8WSI8ykm3fu2cSLLDNuVoeSDH/exec';
-
 const form = document.forms['contact-form'];
 
 if (form) {
@@ -110,12 +58,13 @@ if (form) {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (response.ok) {
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
                 alert("Thank you! Your form is submitted successfully.");
-                form.reset(); // Clear form fields
+                form.reset();
             } else {
-                throw new Error('Form submission failed.');
+                throw new Error(data.message || 'Form submission failed.');
             }
         })
         .catch(error => {
@@ -124,4 +73,3 @@ if (form) {
         });
     });
 }
-
