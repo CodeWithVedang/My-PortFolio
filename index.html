@@ -1,132 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortFolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="header">
-        <a href="#" class="logo">PortFolio</a>
-        <i class="bi bi-list" id="menu-icon"></i>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#service">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="home" id="home">
-        <div class="home-content">
-            <h3>Hi, Myself</h3>
-            <h1>Vedang Shelatkar</h1>
-            <h3>And I'm a <span class="text"></span></h3>
-            <p>with extensive experience for over 3 years.<br>
-                Expertise is to create and website design, Frontend Design, and many more...</p>
-            <div class="social-media">
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-github"></i></a>
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-            </div>
-            <a href="#" class="btn">Download CV</a>
-        </div>
-        <div class="home-img">
-            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Image.png" alt="">
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="about-image">
-            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Image.png" alt="">
-        </div>
-        <div class="about-content">
-            <h2 class="heading">About <span>Me</span></h2>
-            <h3>Full Stack Developer</h3>
-            <p>Strong background in Website Development, Web Design, RPA developer, Frontend Development.<br>
-                Strong experience in developing innovative solutions and contributing to open-source projects.<br>
-                Proficient in programming languages or tools, e.g., Python, JavaScript, etc.<br>
-                For more details on my work and professional connections, please visit my Link Profile, which includes my GitHub and LinkedIn profiles...</p>
-            <a href="#" class="btn">Read More</a>
-        </div>
-    </section>
-
-    <section class="service" id="service">
-        <h2 class="heading">My <span>Services</span></h2>
-        <div class="service-container">
-            <div class="service-box">
-                <i><img src="icon1.png" alt=""></i>
-                <h3>UI/UX Design</h3>
-                <p>Create intuitive and engaging user interfaces and experiences.<br>
-                    - User Research & Analysis<br>
-                    - Wireframing & Prototyping<br>
-                    - Visual Design<br>
-                    - Usability Testing</p>
-                <a href="#" class="btn">Coming Soon!</a>
-            </div>
-            <div class="service-box">
-                <i><img src="bi bi-img2.png" alt=""></i>
-                <h3>Website Design</h3>
-                <p>Build responsive, modern websites using the latest web technologies.<br>
-                    - Custom Website Development<br>
-                    - Responsive Design<br>
-                    - SEO Optimization<br>
-                    - Performance Tuning</p>
-                <a href="#" class="btn">Coming Soon!</a>
-            </div>
-            <div class="service-box">
-                <i><img src="bi bi-img3.png" alt=""></i>
-                <p>Develop robust and scalable mobile applications using Kotlin<br>
-                    - Native Android Development<br>
-                    - Backend Integration<br>
-                    - App Testing & Debugging<br>
-                    - Maintenance & Updates</p>
-                <a href="#" class="btn">Coming Soon!</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="portfolio" id="portfolio">
-        <h2 class="heading">Latest <span>Projects</span></h2>
-        <div class="vsproj-container">
-            <!-- Projects will be populated by update_projects.py -->
-        </div>
-        <div class="portfolio-btn">
-            <a href="myprojects.html" class="btn">View More</a>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
-        <form action="#" name="contact-form">
-            <div class="input-box">
-                <input type="text" name="name" placeholder="Full Name">
-                <input type="email" name="email" placeholder="Email Address">
-            </div>
-            <div class="input-box">
-                <input type="number" name="phone" placeholder="Mobile Number">
-                <input type="text" name="subject" placeholder="Email Subject">
-            </div>
-            <textarea name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </form>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-text">
-            <p>Copyright © 2024 by @CodeWithVedang | All Rights Reserved.</p>
-        </div>
-        <div class="footer-iconTop">
-            <a href="#home"><i class="bi bi-arrow-up"></i></a>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="script.js"></script>
-</body>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   PortFolio
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="header">
+   <a class="logo" href="#">
+    PortFolio
+   </a>
+   <i class="bi bi-list" id="menu-icon">
+   </i>
+   <nav class="navbar">
+    <a class="active" href="#home">
+     Home
+    </a>
+    <a href="#about">
+     About
+    </a>
+    <a href="#service">
+     Services
+    </a>
+    <a href="#portfolio">
+     Portfolio
+    </a>
+    <a href="#contact">
+     Contact
+    </a>
+   </nav>
+  </header>
+  <section class="home" id="home">
+   <div class="home-content">
+    <h3>
+     Hi, Myself
+    </h3>
+    <h1>
+     Vedang Shelatkar
+    </h1>
+    <h3>
+     And I'm a
+     <span class="text">
+     </span>
+    </h3>
+    <p>
+     with extensive experience for over 3 years.
+     <br/>
+     Expertise is to create and website design, Frontend Design, and many more...
+    </p>
+    <div class="social-media">
+     <a href="#">
+      <i class="bi bi-linkedin">
+      </i>
+     </a>
+     <a href="#">
+      <i class="bi bi-github">
+      </i>
+     </a>
+     <a href="#">
+      <i class="bi bi-twitter">
+      </i>
+     </a>
+     <a href="#">
+      <i class="bi bi-instagram">
+      </i>
+     </a>
+    </div>
+    <a class="btn" href="#">
+     Download CV
+    </a>
+   </div>
+   <div class="home-img">
+    <img alt="" src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Image.png"/>
+   </div>
+  </section>
+  <section class="about" id="about">
+   <div class="about-image">
+    <img alt="" src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Image.png"/>
+   </div>
+   <div class="about-content">
+    <h2 class="heading">
+     About
+     <span>
+      Me
+     </span>
+    </h2>
+    <h3>
+     Full Stack Developer
+    </h3>
+    <p>
+     Strong background in Website Development, Web Design, RPA developer, Frontend Development.
+     <br/>
+     Strong experience in developing innovative solutions and contributing to open-source projects.
+     <br/>
+     Proficient in programming languages or tools, e.g., Python, JavaScript, etc.
+     <br/>
+     For more details on my work and professional connections, please visit my Link Profile, which includes my GitHub and LinkedIn profiles...
+    </p>
+    <a class="btn" href="#">
+     Read More
+    </a>
+   </div>
+  </section>
+  <section class="service" id="service">
+   <h2 class="heading">
+    My
+    <span>
+     Services
+    </span>
+   </h2>
+   <div class="service-container">
+    <div class="service-box">
+     <i>
+      <img alt="" src="icon1.png"/>
+     </i>
+     <h3>
+      UI/UX Design
+     </h3>
+     <p>
+      Create intuitive and engaging user interfaces and experiences.
+      <br/>
+      - User Research &amp; Analysis
+      <br/>
+      - Wireframing &amp; Prototyping
+      <br/>
+      - Visual Design
+      <br/>
+      - Usability Testing
+     </p>
+     <a class="btn" href="#">
+      Coming Soon!
+     </a>
+    </div>
+    <div class="service-box">
+     <i>
+      <img alt="" src="bi bi-img2.png"/>
+     </i>
+     <h3>
+      Website Design
+     </h3>
+     <p>
+      Build responsive, modern websites using the latest web technologies.
+      <br/>
+      - Custom Website Development
+      <br/>
+      - Responsive Design
+      <br/>
+      - SEO Optimization
+      <br/>
+      - Performance Tuning
+     </p>
+     <a class="btn" href="#">
+      Coming Soon!
+     </a>
+    </div>
+    <div class="service-box">
+     <i>
+      <img alt="" src="bi bi-img3.png"/>
+     </i>
+     <p>
+      Develop robust and scalable mobile applications using Kotlin
+      <br/>
+      - Native Android Development
+      <br/>
+      - Backend Integration
+      <br/>
+      - App Testing &amp; Debugging
+      <br/>
+      - Maintenance &amp; Updates
+     </p>
+     <a class="btn" href="#">
+      Coming Soon!
+     </a>
+    </div>
+   </div>
+  </section>
+  <section class="portfolio" id="portfolio">
+   <h2 class="heading">
+    Latest
+    <span>
+     Projects
+    </span>
+   </h2>
+   <div class="vsproj-container">
+    <div class="vsproj-box">
+     <div class="vsproj-layer">
+      <i class="bi bi-code-slash vsproj-icon">
+      </i>
+      <h4>
+       Deep-Chat Using DeepSeep API
+      </h4>
+      <p>
+       deep-chat, a modern and responsive AI chatbot interface built using HTML, CSS, and JavaScript, powered by the DeepSeek API via OpenRouter. This lightweight and clean interface replicates a ChatGPT-style experience with full support for markdown, code rendering, session history, dark/light theme, and more
+      </p>
+      <a class="btn vsproj-btn" href="https://deep-chat-cwv.vercel.app/">
+       View Project
+      </a>
+     </div>
+    </div>
+    <div class="vsproj-box">
+     <div class="vsproj-layer">
+      <i class="bi bi-code-slash vsproj-icon">
+      </i>
+      <h4>
+       SaveSphere Amazon Scraper &amp; Pinterest Integration Bot
+      </h4>
+      <p>
+       SaveSphere, an innovative bot that automates the process of scraping top Amazon products, integrating Pinterest RSS feeds, and managing affiliate links—all seamlessly synced to Google Sheets!  This Project powers a dynamic system to track trending Amazon deals and showcase them via Pinterest, making it a perfect tool for affiliate marketers, deal hunters, and automation enthusiasts.
+      </p>
+      <a class="btn vsproj-btn" href="https://github.com/CodeWithVedang/SaveSphere">
+       View Project
+      </a>
+     </div>
+    </div>
+    <div class="vsproj-box">
+     <div class="vsproj-layer">
+      <i class="bi bi-code-slash vsproj-icon">
+      </i>
+      <h4>
+       QR-Based Attendance System
+      </h4>
+      <p>
+       A modern Python desktop application that allows users to mark attendance using QR codes, developed with Tkinter, OpenCV, and pandas. It features a user-friendly interface, real-time camera integration, and an admin panel for managing user data and attendance records.
+      </p>
+      <a class="btn vsproj-btn" href="https://github.com/CodeWithVedang/Attendance_Systeam_Using_Python">
+       View Project
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="portfolio-btn">
+    <a class="btn" href="myprojects.html">
+     View More
+    </a>
+   </div>
+  </section>
+  <section class="contact" id="contact">
+   <h2 class="heading">
+    Contact
+    <span>
+     Me
+    </span>
+   </h2>
+   <form action="#" name="contact-form">
+    <div class="input-box">
+     <input name="name" placeholder="Full Name" type="text"/>
+     <input name="email" placeholder="Email Address" type="email"/>
+    </div>
+    <div class="input-box">
+     <input name="phone" placeholder="Mobile Number" type="number"/>
+     <input name="subject" placeholder="Email Subject" type="text"/>
+    </div>
+    <textarea cols="30" name="message" placeholder="Your Message" rows="10"></textarea>
+    <input class="btn" type="submit" value="Send Message"/>
+   </form>
+  </section>
+  <footer class="footer">
+   <div class="footer-text">
+    <p>
+     Copyright © 2024 by @CodeWithVedang | All Rights Reserved.
+    </p>
+   </div>
+   <div class="footer-iconTop">
+    <a href="#home">
+     <i class="bi bi-arrow-up">
+     </i>
+    </a>
+   </div>
+  </footer>
+  <script src="https://unpkg.com/scrollreveal">
+  </script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js">
+  </script>
+  <script src="script.js">
+  </script>
+ </body>
 </html>
