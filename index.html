@@ -6,10 +6,9 @@
   <title>
    PortFolio
   </title>
-   <!--Font Awesome -->
+  <!--Font Awesome -->
   <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet"/>
   <!-- Bootstrap Icons -->
- 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
   <link href="style.css" rel="stylesheet"/>
  </head>
@@ -65,13 +64,12 @@
       <i class="bi bi-github">
       </i>
      </a>
-     
      <a href="https://www.instagram.com/__vedangs__/">
       <i class="bi bi-instagram">
       </i>
      </a>
     </div>
-    <a class="btn" href="PDF/MyCv.pdf" download="Vedang_Shelatkar_CV.pdf">
+    <a class="btn" download="Vedang_Shelatkar_CV.pdf" href="PDF/MyCv.pdf">
      Download CV
     </a>
    </div>
@@ -107,8 +105,8 @@
     </a>
    </div>
   </section>
-   <!--Services Section-->
- <section class="service" id="service">
+  <!--Services Section-->
+  <section class="service" id="service">
    <h2 class="heading">
     My
     <span>
@@ -241,15 +239,17 @@
     </a>
    </div>
   </section>
- <section class="contact" id="contact">
+  <section class="contact" id="contact">
    <h2 class="heading">
     Contact
-    <span>Me</span>
+    <span>
+     Me
+    </span>
    </h2>
-   <form name="contact-form" method="POST">
+   <form method="POST" name="contact-form">
     <div class="input-box">
-     <input name="Full Name" placeholder="Full Name" type="text" required/>
-     <input name="Email Address" placeholder="Email Address" type="email" required/>
+     <input name="Full Name" placeholder="Full Name" required="" type="text"/>
+     <input name="Email Address" placeholder="Email Address" required="" type="email"/>
     </div>
     <div class="input-box">
      <input name="Mobile Number" placeholder="Mobile Number" type="number"/>
@@ -258,7 +258,7 @@
     <textarea cols="30" name="Message" placeholder="Your Message" rows="10"></textarea>
     <input class="btn" type="submit" value="Send Message"/>
    </form>
-</section>
+  </section>
   <footer class="footer">
    <div class="footer-text">
     <p>
