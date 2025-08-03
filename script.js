@@ -73,3 +73,11 @@ if (form) {
         });
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const skillItems = document.querySelectorAll('.skill-item');
+  skillItems.forEach((item, index) => {
+    item.style.setProperty('--i', index);
+  });
+});
