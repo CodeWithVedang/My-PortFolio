@@ -337,7 +337,7 @@ box-shadow: 0 0 1rem var(--main-color) ;
     color: var(--snd-bf-color);
 }
 .skills-section {
-  background-color: #1a1a1a;
+  background-color:var(--bg-color);
   color: #ffffff;
   padding: 60px 20px;
   min-height: 100vh;
