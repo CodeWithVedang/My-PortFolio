@@ -10,10 +10,12 @@
     text-decoration: none;  /*Remove if missbehave*/
 }
 :root{
-    --bg-color:#191f36;
-    --snd-bf-color:#262B40;
+    --bg-color:#000000;
+    --snd-bf-color:#000000;
     --text-color:#fff;
-    --main-color:#59b2f4;
+    --main-color:rgb(19, 0, 186);
+    --form-text:#000982;
+    --project-bg-color:#00043f;
 }
 html{
     font-size: 62.5%;
@@ -216,7 +218,7 @@ span{
 
 .vsproj-box {
     flex: 1 1 30rem; /* Match service-box responsive sizing */
-    background: #2d365b;
+    background: var(--project-bg-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -262,9 +264,9 @@ span{
     display: inline-block;
     padding: 10px 20px;
     background: #00eeff; /* Matches Services section */
-    color: #fff;
+    color: #000000;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-weight: 500;
     transition: background 0.3s ease;
 }
@@ -293,7 +295,7 @@ span{
     padding: 1.5rem;
     font-size: 1.6rem;
     color: var(--text-color);
-    background: var(--snd-bf-color);
+    background: var(--form-text);
     border-radius: .8rem;
     margin: .7rem 0;
 }
