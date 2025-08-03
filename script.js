@@ -81,3 +81,100 @@ document.addEventListener('DOMContentLoaded', () => {
     item.style.setProperty('--i', index);
   });
 });
+
+
+// Neon Cursor Trail
+const canvas = document.getElementById('cursor-trail');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 6 + 2;
+        this.speedX = (Math.random() - 0.5) * 2;
+        this.speedY = (Math.random() - 0.5) * 2;
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.life = 100;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 2;
+        if (this.size > 0.2) this.size -= 0.1;
+    }
+    draw() {
+    ctx.save();
+    ctx.globalAlpha = this.life / 100; // smooth transparency based on life
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.shadowBlur = 25;
+    ctx.shadowColor = this.color;
+    ctx.fill();
+    ctx.restore();
+}
+
+}
+
+function handleParticles() {
+    for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].life <= 0) {
+            particles.splice(i, 1);
+            i--;
+        }
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleParticles();
+    requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('mousemove', e => {
+    for (let i = 0; i < 5; i++) {
+        particles.push(new Particle(e.x, e.y));
+    }
+});
+// Firework Particle Class
+class FireworkParticle extends Particle {
+    constructor(x, y) {
+        super(x, y);
+        this.speedX = (Math.random() - 0.5) * 8; // wider spread
+        this.speedY = (Math.random() - 0.5) * 8; 
+        this.size = Math.random() * 4 + 3;
+        this.life = 80;
+        this.gravity = 0.15; // smooth fall
+        this.friction = 0.98; // gradual slowdown
+        this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+    }
+    update() {
+        this.speedX *= this.friction;
+        this.speedY *= this.friction;
+        this.speedY += this.gravity; // gravity pull
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 1.5;
+        if (this.size > 0.2) this.size *= 0.96;
+    }
+}
+
+
+// Firework on Click
+window.addEventListener('click', e => {
+    for (let i = 0; i < 50; i++) {  // Number of particles per firework
+        particles.push(new FireworkParticle(e.x, e.y));
+    }
+});
