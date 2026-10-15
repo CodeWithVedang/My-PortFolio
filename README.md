@@ -18,76 +18,17 @@ A personal portfolio site to showcase skills, services, and projects in Full Sta
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Stack
 
-- **Frontend**:  
-  `HTML5`, `CSS3`, `JavaScript`, `Typed.js`, `ScrollReveal.js`, `Bootstrap Icons`, `Google Fonts (Nunito)`
+React 18 + TypeScript + Vite, plain CSS tokens. Projects live in `src/data/projects.json`, refreshed daily from Google Sheets by `update_projects.py` (GitHub Actions). Profile content lives in `src/data/profile.ts`.
 
-- **Automation & Backend**:  
-  `Python`, `gspread`, `beautifulsoup4`, `GitPython`, `Google Apps Script`, `GitHub Actions`
+## 🧪 Run
 
-- **Version Control**:  
-  `Git`, `GitHub`
-
----
-
-## ⚙️ How It Works
-
-1. **Static Site**: 
-   - `index.html` and `myprojects.html` are the core pages.
-   - Projects are dynamically injected into these files by a Python script.
-
-2. **Dynamic Project Updates**:
-   - `update_projects.py` pulls project data from a connected Google Sheet.
-   - Rewrites the homepage with the latest 3 projects.
-   - Updates the full list on the My Projects page.
-   - Commits and pushes changes to GitHub using `GitPython`.
-
-3. **Automation**:
-   - GitHub Actions workflow (`update-projects.yml`) triggers daily at 10 AM IST.
-   - Authenticates via GitHub token and Google Sheets API credentials.
-
-4. **Contact Form**:
-   - Submits form data to a connected Google Sheet using Google Apps Script.
-
----
-
-## 🧪 Setup Instructions
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/CodeWithVedang/My-PortFolio.git
-   cd My-PortFolio
-
-
-2. **Install Dependencies**:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set Environment Variables**:
-
-   ```bash
-   export GOOGLE_SHEET_CREDENTIALS='$(cat path/to/credentials.json)'
-   export G_TOKEN='your-github-token'
-   ```
-
-4. **(Optional) Run the Update Script**:
-
-   ```bash
-   python update_projects.py
-   ```
-
-5. **Serve Locally**:
-
-   ```bash
-   python -m http.server 8000
-   ```
-
-   Open `http://localhost:8000` in your browser.
-
----
+```bash
+npm install
+npm run dev      # local dev
+npm run build    # typecheck + production build to dist/
+```
 
 ## 🚢 Deployment
 

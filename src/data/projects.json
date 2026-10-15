@@ -1,0 +1,82 @@
+[
+  {
+    "name": "TiffinHub",
+    "description": "Responsive Food Ordering Web App A sleek, mobile-friendly web application built with HTML, CSS, and JavaScript for seamless online tiffin ordering. Features include smooth scrolling, popup order/contact forms, skeleton loaders, and an interactive UI optimized for all devices.",
+    "link": "https://tiffin-hub-ten.vercel.app/"
+  },
+  {
+    "name": "Weather WebApp",
+    "description": "Real-time weather app using OpenWeatherMap API with location access and animated UI.",
+    "link": "https://weather-app-prodigy-wd-05.vercel.app/"
+  },
+  {
+    "name": "Developer Portfolio Website",
+    "description": "Personal portfolio with animated sections, project gallery, and a functional contact form.",
+    "link": "https://personal-portfolio-website-prodigy.vercel.app/"
+  },
+  {
+    "name": "Tic-Tac-Toe Game",
+    "description": "Classic two-player and AI-powered Tic-Tac-Toe with difficulty levels and smart game logic.",
+    "link": "https://tic-tac-toe-web-application-prodigy.vercel.app/"
+  },
+  {
+    "name": "Stopwatch Web App",
+    "description": "A functional stopwatch with lap tracking, editing, deleting, and smooth UI transitions.",
+    "link": "https://stopwatchwebapplication-prodigy-wd.vercel.app/"
+  },
+  {
+    "name": "Responsive Landing Page",
+    "description": "A modern landing page with scroll effects, animations, and mobile-friendly navigation.",
+    "link": "https://responsivelandingpage-prodigy-wd-1.vercel.app/"
+  },
+  {
+    "name": "Deep-Chat Using DeepSeep API",
+    "description": "deep-chat, a modern and responsive AI chatbot interface built using HTML, CSS, and JavaScript, powered by the DeepSeek API via OpenRouter. This lightweight and clean interface replicates a ChatGPT-style experience with full support for markdown, code rendering, session history, dark/light theme, and more",
+    "link": "https://deep-chat-cwv.vercel.app/"
+  },
+  {
+    "name": "SaveSphere Amazon Scraper & Pinterest Integration Bot",
+    "description": "SaveSphere, an innovative bot that automates the process of scraping top Amazon products, integrating Pinterest RSS feeds, and managing affiliate links—all seamlessly synced to Google Sheets! This Project powers a dynamic system to track trending Amazon deals and showcase them via Pinterest, making it a perfect tool for affiliate marketers, deal hunters, and automation enthusiasts.",
+    "link": "https://github.com/CodeWithVedang/SaveSphere"
+  },
+  {
+    "name": "QR-Based Attendance System",
+    "description": "A modern Python desktop application that allows users to mark attendance using QR codes, developed with Tkinter, OpenCV, and pandas. It features a user-friendly interface, real-time camera integration, and an admin panel for managing user data and attendance records.",
+    "link": "https://github.com/CodeWithVedang/Attendance_Systeam_Using_Python"
+  },
+  {
+    "name": "Medical Management System",
+    "description": "The Medical Management System is a web-based application designed to manage medicine sales for a pharmacy or medical store.",
+    "link": "https://github.com/CodeWithVedang/medical_management_system"
+  },
+  {
+    "name": "Views Increaser Tool",
+    "description": "I developed a Views Generator using HTML, CSS, and JavaScript, designed to simulate multiple views on a specified URL. Users can enter a URL and a desired number of views, and the application will open the link according to the specified number of views.",
+    "link": "https://viewsincreserfree.vercel.app/"
+  },
+  {
+    "name": "QR Code Generator Tool",
+    "description": "QR Code Generator using HTML, CSS, and JavaScript. This tool allows users to easily generate QR codes from input strings or website links, facilitating quick sharing and access to information.",
+    "link": "https://qr-code-generator-pied-nine.vercel.app/"
+  },
+  {
+    "name": "Password Generator",
+    "description": "dynamic password generator using HTML, CSS, and JavaScript. This tool is designed to help users create strong, secure passwords by combining given words either sequentially or randomly, ensuring both convenience and security",
+    "link": "https://pass-gen-tan.vercel.app/"
+  },
+  {
+    "name": "Todo List Using HTML, CSS, and JavaScript",
+    "description": "This Project contains a dynamic Todo List application built with HTML, CSS, and JavaScript. It demonstrates practical usage of DOM manipulation, local storage, and includes a countdown timer with audio notifications.",
+    "link": "https://todo-list-using-html-css-js-beta.vercel.app/"
+  },
+  {
+    "name": "Hotel Managment System",
+    "description": "This project is designed to streamline the operations of a hotel by managing reservations, room availability, guest information, billing, and more.",
+    "link": "https://hotel-management-cwv.vercel.app/"
+  },
+  {
+    "name": "GeminiSense AI ChatBot",
+    "description": "A chatbot based on Google Gemini.",
+    "link": "https://chat-bot-gemini-beta.vercel.app/"
+  }
+]
