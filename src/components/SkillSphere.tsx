@@ -35,7 +35,7 @@ export function SkillSphere() {
 
   const n = skills.length;
   return (
-    <div className="sphere-stage" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
+    <div className="sphere-stage" data-nodrag onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
       <div className="sphere" ref={globe} role="list" aria-label="Skills globe">
         {skills.map((s, i) => {
           const lat = (Math.asin(1 - (2 * (i + 0.5)) / n) * 180) / Math.PI;

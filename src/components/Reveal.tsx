@@ -1,28 +1,9 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { CSSProperties, ReactNode } from "react";
 
-// Flies the block in from depth when it scrolls into view.
+// Flies the block in from depth each time its face rotates to the front (see .face.active .enter).
 export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [seen, setSeen] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setSeen(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.12 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
-    <div ref={ref} className={`reveal ${seen ? "in" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div className={`enter ${className}`} style={{ animationDelay: `${delay}ms` } as CSSProperties}>
       {children}
     </div>
   );

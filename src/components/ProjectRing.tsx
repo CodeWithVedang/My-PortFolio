@@ -25,7 +25,7 @@ export function ProjectRing({ projects }: { projects: Project[] }) {
   const front = ((idx % n) + n) % n;
   return (
     <div
-      className="ring-wrap"
+      className="ring-wrap" data-nodrag
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
