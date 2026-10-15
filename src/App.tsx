@@ -1,17 +1,31 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { About } from "./components/About";
+import { Experience } from "./components/Experience";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
+import { Credentials } from "./components/Credentials";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import projects from "./data/projects.json";
 
+// three.js is code-split so the page paints before the 3D scene loads.
+const Scene = lazy(() => import("./three/Scene"));
+
 const isProjectsRoute = () => window.location.hash.startsWith("#/projects");
+
+function hasWebGL() {
+  try {
+    return !!document.createElement("canvas").getContext("webgl2");
+  } catch {
+    return false;
+  }
+}
 
 export default function App() {
   const [allProjects, setAllProjects] = useState(isProjectsRoute());
+  const [webgl] = useState(hasWebGL);
+  const [reduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
   useEffect(() => {
     const sync = () => {
@@ -28,6 +42,7 @@ export default function App() {
 
   return (
     <>
+      {webgl ? <Suspense fallback={<div className="scene" />}><Scene reduced={reduced} /></Suspense> : <div className="scene" />}
       <a className="skip" href="#main">Skip to content</a>
       <Header />
       <main id="main">
@@ -36,9 +51,10 @@ export default function App() {
         ) : (
           <>
             <Hero projectCount={projects.length} />
-            <About />
+            <Experience />
             <Skills />
-            <Projects projects={projects.slice(0, 3)} />
+            <Projects projects={projects.slice(0, 6)} />
+            <Credentials />
             <Contact />
           </>
         )}

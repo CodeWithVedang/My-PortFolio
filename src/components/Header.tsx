@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 const links = [
-  ["About", "#about"],
+  ["Experience", "#experience"],
   ["Skills", "#skills"],
-  ["Projects", "#projects"],
+  ["Work", "#projects"],
+  ["Credentials", "#credentials"],
   ["Contact", "#contact"],
 ] as const;
 
@@ -13,7 +14,7 @@ export function Header() {
     <header className="header">
       <div className="container header-row">
         <a className="logo" href="#home" onClick={() => setOpen(false)}>
-          vedang<span>.</span>
+          vedang<span>.dev</span>
         </a>
         <button className="menu-btn" aria-expanded={open} aria-controls="nav" onClick={() => setOpen(!open)}>
           {open ? "Close" : "Menu"}
