@@ -2,71 +2,87 @@ import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-type Shape = "knot" | "icosa" | "octa" | "torus" | "dodeca";
+type Shape = "knot" | "gem" | "sphere" | "torus" | "capsule";
 interface Station { shape: Shape; pos: [number, number, number]; color: string; size: number }
 
-// One landmark per page section; the camera flies past them as you scroll.
+// One glossy landmark per page section, parked at the sides so the camera passes by without covering content.
 const STATIONS: Station[] = [
-  { shape: "knot", pos: [5.5, 0.5, -4], color: "#8b5cf6", size: 1.6 },
-  { shape: "icosa", pos: [-6, 1, -17], color: "#22d3ee", size: 2.2 },
-  { shape: "octa", pos: [6, -0.5, -30], color: "#f472b6", size: 2.2 },
-  { shape: "torus", pos: [-6, 0.5, -43], color: "#a3e635", size: 2 },
-  { shape: "dodeca", pos: [5, 0, -56], color: "#fbbf24", size: 2.1 },
+  { shape: "knot", pos: [8.5, 0.5, -4], color: "#34d399", size: 1.7 },
+  { shape: "gem", pos: [-8.5, 1, -17], color: "#38bdf8", size: 2 },
+  { shape: "sphere", pos: [8.5, -0.5, -30], color: "#fb7185", size: 1.9 },
+  { shape: "torus", pos: [-8.5, 0.5, -43], color: "#fbbf24", size: 1.9 },
+  { shape: "capsule", pos: [8, 0, -56], color: "#a78bfa", size: 1.5 },
 ];
+const PALETTE = ["#34d399", "#38bdf8", "#fb7185", "#fbbf24", "#a78bfa"];
 const TRAVEL = 62;
 
 function Geometry({ shape, size }: { shape: Shape; size: number }) {
   switch (shape) {
-    case "knot": return <torusKnotGeometry args={[size * 0.7, size * 0.22, 160, 20]} />;
-    case "icosa": return <icosahedronGeometry args={[size, 1]} />;
-    case "octa": return <octahedronGeometry args={[size, 0]} />;
-    case "torus": return <torusGeometry args={[size, size * 0.3, 16, 64]} />;
-    default: return <dodecahedronGeometry args={[size, 0]} />;
+    case "knot": return <torusKnotGeometry args={[size * 0.7, size * 0.26, 220, 32]} />;
+    case "gem": return <icosahedronGeometry args={[size, 0]} />;
+    case "sphere": return <sphereGeometry args={[size, 48, 48]} />;
+    case "torus": return <torusGeometry args={[size, size * 0.38, 32, 80]} />;
+    default: return <capsuleGeometry args={[size * 0.6, size * 1.6, 16, 32]} />;
   }
 }
 
 function Landmark({ s, index }: { s: Station; index: number }) {
-  const ref = useRef<THREE.Group>(null);
+  const ref = useRef<THREE.Mesh>(null);
   useFrame(({ clock }) => {
-    const g = ref.current;
-    if (!g) return;
+    const m = ref.current;
+    if (!m) return;
     const t = clock.elapsedTime;
-    g.rotation.x = t * 0.15 + index;
-    g.rotation.y = t * 0.22;
-    g.position.y = s.pos[1] + Math.sin(t * 0.6 + index) * 0.35;
+    m.rotation.x = t * 0.18 + index;
+    m.rotation.y = t * 0.25;
+    m.position.y = s.pos[1] + Math.sin(t * 0.6 + index) * 0.4;
   });
   return (
-    <group ref={ref} position={s.pos}>
-      <mesh>
-        <Geometry shape={s.shape} size={s.size} />
-        <meshBasicMaterial color={s.color} wireframe transparent opacity={0.55} />
-      </mesh>
-      <mesh scale={0.62}>
-        <Geometry shape={s.shape} size={s.size} />
-        <meshBasicMaterial color={s.color} transparent opacity={0.1} blending={THREE.AdditiveBlending} depthWrite={false} />
-      </mesh>
-      <pointLight color={s.color} intensity={2} distance={14} />
-    </group>
+    <mesh ref={ref} position={s.pos}>
+      <Geometry shape={s.shape} size={s.size} />
+      <meshPhysicalMaterial color={s.color} roughness={0.2} metalness={0.15} clearcoat={1} clearcoatRoughness={0.1} flatShading={s.shape === "gem"} />
+    </mesh>
   );
 }
 
-function Stars({ count, color, size }: { count: number; color: string; size: number }) {
-  const positions = useMemo(() => {
-    const a = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      a[i * 3] = (Math.random() - 0.5) * 90;
-      a[i * 3 + 1] = (Math.random() - 0.5) * 50;
-      a[i * 3 + 2] = 14 - Math.random() * 96;
-    }
-    return a;
-  }, [count]);
+// Drifting colour bubbles that replace the old star field.
+function Bubbles({ count }: { count: number }) {
+  const ref = useRef<THREE.InstancedMesh>(null);
+  const data = useMemo(
+    () => Array.from({ length: count }, () => ({
+      x: (Math.random() - 0.5) * 60,
+      y: (Math.random() - 0.5) * 30,
+      z: 14 - Math.random() * 90,
+      r: 0.08 + Math.random() * 0.28,
+      speed: 0.2 + Math.random() * 0.5,
+      phase: Math.random() * 6.28,
+    })),
+    [count],
+  );
+  useEffect(() => {
+    const m = ref.current;
+    if (!m) return;
+    const c = new THREE.Color();
+    data.forEach((_, i) => m.setColorAt(i, c.set(PALETTE[i % PALETTE.length])));
+    if (m.instanceColor) m.instanceColor.needsUpdate = true;
+  }, [data]);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  useFrame(({ clock }) => {
+    const m = ref.current;
+    if (!m) return;
+    const t = clock.elapsedTime;
+    data.forEach((d, i) => {
+      dummy.position.set(d.x + Math.sin(t * d.speed + d.phase) * 0.6, d.y + Math.cos(t * d.speed + d.phase) * 0.8, d.z);
+      dummy.scale.setScalar(d.r);
+      dummy.updateMatrix();
+      m.setMatrixAt(i, dummy.matrix);
+    });
+    m.instanceMatrix.needsUpdate = true;
+  });
   return (
-    <points>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3} />
-      </bufferGeometry>
-      <pointsMaterial color={color} size={size} sizeAttenuation transparent opacity={0.9} blending={THREE.AdditiveBlending} depthWrite={false} />
-    </points>
+    <instancedMesh ref={ref} args={[undefined, undefined, count]}>
+      <sphereGeometry args={[1, 16, 16]} />
+      <meshStandardMaterial roughness={0.35} emissiveIntensity={0.25} />
+    </instancedMesh>
   );
 }
 
@@ -106,12 +122,14 @@ export default function Scene({ reduced }: { reduced: boolean }) {
   return (
     <div className="scene" aria-hidden>
       <Canvas dpr={[1, 1.5]} camera={{ fov: 60, near: 0.1, far: 160, position: [0, 0, 8] }} gl={{ antialias: true, powerPreference: "high-performance" }}>
-        <color attach="background" args={["#05060c"]} />
-        <fog attach="fog" args={["#05060c", 18, 70]} />
+        <color attach="background" args={["#070d1a"]} />
+        <fog attach="fog" args={["#070d1a", 22, 80]} />
+        <ambientLight intensity={0.9} />
+        <hemisphereLight args={["#bae6fd", "#1e1b4b", 0.8]} />
+        <directionalLight position={[6, 8, 6]} intensity={2.4} color="#fff7ed" />
+        <directionalLight position={[-8, -2, -4]} intensity={1.2} color="#7dd3fc" />
         <Rig reduced={reduced} />
-        <Stars count={2600} color="#c7d2fe" size={0.07} />
-        <Stars count={500} color="#22d3ee" size={0.12} />
-        <gridHelper args={[240, 120, "#4c1d95", "#1e1b4b"]} position={[0, -7, -45]} />
+        <Bubbles count={120} />
         {STATIONS.map((s, i) => <Landmark key={s.shape} s={s} index={i} />)}
       </Canvas>
     </div>
