@@ -1,5 +1,25 @@
 [
   {
+    "name": "TrueInbox — Smart & Secure SMS Manager",
+    "description": "A privacy-first Android app built with Flutter for OTP detection, SMS classification, phishing alerts, and inbox risk analysis.",
+    "link": "https://github.com/CodeWithVedang/true_inbox"
+  },
+  {
+    "name": "Stockly — Store & POS Management System",
+    "description": "A Modern Inventory, Billing, and Analytics Dashboard built with React + Vite + Tailwind",
+    "link": "https://stockly-store-management.vercel.app/"
+  },
+  {
+    "name": "AetherDrop",
+    "description": "Peer to Peer File Sharing over Local Wi-Fi",
+    "link": "https://aetherdrop.vercel.app/"
+  },
+  {
+    "name": "MailFlash",
+    "description": "Disposable email generator with live inbox, copy feature, and dark/light themes, built using HTML, CSS, and JS.",
+    "link": "https://mail-flash.vercel.app/"
+  },
+  {
     "name": "TiffinHub",
     "description": "Responsive Food Ordering Web App A sleek, mobile-friendly web application built with HTML, CSS, and JavaScript for seamless online tiffin ordering. Features include smooth scrolling, popup order/contact forms, skeleton loaders, and an interactive UI optimized for all devices.",
     "link": "https://tiffin-hub-ten.vercel.app/"
