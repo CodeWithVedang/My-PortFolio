@@ -1,6 +1,5 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from bs4 import BeautifulSoup
 import git
 import os
 import json
@@ -31,59 +30,12 @@ projects = [
 # Sort projects by row number (assuming newer projects are at the bottom)
 projects.sort(key=lambda x: x["row"], reverse=True)
 
-# Function to populate portfolio container
-def populate_portfolio(soup, projects_to_show):
-    portfolio_container = soup.find("div", class_="vsproj-container")
-    portfolio_container.clear()  # Clear existing projects
-
-    if not projects_to_show:
-        placeholder = soup.new_tag("p")
-        placeholder.string = "No projects available at the moment."
-        portfolio_container.append(placeholder)
-    else:
-        for project in projects_to_show:
-            project_div = soup.new_tag("div", **{"class": "vsproj-box"})
-            portfolio_layer = soup.new_tag("div", **{"class": "vsproj-layer"})
-            
-            # Project logo (Bootstrap icon)
-            icon = soup.new_tag("i", **{"class": "bi bi-code-slash vsproj-icon"})
-            portfolio_layer.append(icon)
-            
-            # Project title
-            h4 = soup.new_tag("h4")
-            h4.string = project["name"]
-            portfolio_layer.append(h4)
-            
-            # Project description
-            p = soup.new_tag("p")
-            p.string = project["description"]
-            portfolio_layer.append(p)
-            
-            # Project button
-            button = soup.new_tag("a", href=project["link"], **{"class": "btn vsproj-btn"})
-            button.string = "View Project"
-            portfolio_layer.append(button)
-            
-            project_div.append(portfolio_layer)
-            portfolio_container.append(project_div)
-
-# Update index.html (3 latest projects)
-with open("index.html", "r", encoding="utf-8") as file:
-    index_soup = BeautifulSoup(file, "html.parser")
-
-populate_portfolio(index_soup, projects[:3])  # Limit to 3 latest projects
-
-with open("index.html", "w", encoding="utf-8") as file:
-    file.write(str(index_soup.prettify()))
-
-# Update myprojects.html (all projects)
-with open("myprojects.html", "r", encoding="utf-8") as file:
-    myprojects_soup = BeautifulSoup(file, "html.parser")
-
-populate_portfolio(myprojects_soup, projects)  # All projects
-
-with open("myprojects.html", "w", encoding="utf-8") as file:
-    file.write(str(myprojects_soup.prettify()))
+# Write src/data/projects.json (React app imports it at build time)
+with open("src/data/projects.json", "w", encoding="utf-8") as file:
+    json.dump(
+        [{"name": p["name"], "description": p["description"], "link": p["link"]} for p in projects],
+        file, indent=2, ensure_ascii=False,
+    )
 
 # Git operations
 repo = git.Repo(".")
@@ -93,8 +45,7 @@ g_token = os.environ.get("G_TOKEN")
 remote_url = f"https://CodeWithVedang:{g_token}@github.com/CodeWithVedang/My-PortFolio.git"
 repo.remote(name="origin").set_url(remote_url)
 
-repo.git.add("index.html")
-repo.git.add("myprojects.html")
+repo.git.add("src/data/projects.json")
 if repo.is_dirty():
     repo.git.commit(m=f"Update projects section - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
