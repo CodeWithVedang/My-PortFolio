@@ -1,7 +1,5 @@
+import { useState } from "react";
 import { featured } from "../data/profile";
-import { ProjectRing } from "./ProjectRing";
-import { Reveal } from "./Reveal";
-import { TiltCard } from "./TiltCard";
 
 export interface Project {
   name: string;
@@ -9,50 +7,61 @@ export interface Project {
   link: string;
 }
 
+const kinds = ["All", "Web", "Mobile"] as const;
+type Kind = (typeof kinds)[number];
+const kindOf = (p: Project): Exclude<Kind, "All"> => (/android|flutter|kotlin/i.test(`${p.name} ${p.description}`) ? "Mobile" : "Web");
+
 function ProjectCard({ p }: { p: Project }) {
   const source = p.link.includes("github.com");
   return (
-    <TiltCard className="glass project" max={7}>
-      <span className="chip">{source ? "Source code" : "Live demo"}</span>
+    <article className="card">
+      <p className="tag">{source ? "Source code" : "Live demo"}</p>
       <h3>{p.name}</h3>
       <p>{p.description}</p>
       <a className="link" href={p.link} target="_blank" rel="noopener noreferrer">
         {source ? "View on GitHub" : "Open project"} <span aria-hidden>↗</span>
       </a>
-    </TiltCard>
+    </article>
   );
 }
 
 export function Projects({ projects, all = false }: { projects: Project[]; all?: boolean }) {
+  const [kind, setKind] = useState<Kind>("All");
+  const [q, setQ] = useState("");
+  const shown = projects.filter((p) => (kind === "All" || kindOf(p) === kind) && `${p.name} ${p.description}`.toLowerCase().includes(q.trim().toLowerCase()));
+  const list = !all && kind === "All" && !q ? shown.slice(0, 6) : shown;
   return (
     <section className="section container" id="projects">
-      <Reveal>
-        <div className="section-head">
-          <h2 className="section-title"><small>{all ? "" : "03 /"}</small> {all ? "All projects" : "Work"}</h2>
-          {all ? <a className="link" href="#home">← Back home</a> : <a className="link" href="#/projects">View all projects →</a>}
-        </div>
-      </Reveal>
+      <div className="section-head">
+        <h2>{all ? "All projects" : "Selected work"}</h2>
+        {all ? <a className="link" href="#">← Back home</a> : <a className="link" href="#/projects">View all projects →</a>}
+      </div>
 
       {!all && (
-        <div className="featured">
-          {featured.map((f, i) => (
-            <Reveal key={f.title} delay={i * 90}>
-              <TiltCard className="glass featured-card" max={8}>
-                <span className="chip">{f.tag}</span>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
-              </TiltCard>
-            </Reveal>
+        <div className="grid-3 featured">
+          {featured.map((f) => (
+            <article className="card feat" key={f.title}>
+              <p className="tag">{f.tag}</p>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </article>
           ))}
         </div>
       )}
 
+      <div className="toolbar">
+        <div className="tabs" role="group" aria-label="Filter projects">
+          {kinds.map((k) => <button key={k} className="tab" aria-pressed={kind === k} onClick={() => setKind(k)}>{k}</button>)}
+        </div>
+        <label className="search"><span className="sr">Search projects</span><input type="search" placeholder="Search projects…" value={q} onChange={(e) => setQ(e.target.value)} /></label>
+      </div>
+
       {projects.length === 0 ? (
         <p className="lead">No projects available at the moment.</p>
-      ) : all ? (
-        <div className="project-grid">{projects.map((p) => <Reveal key={p.link}><ProjectCard p={p} /></Reveal>)}</div>
+      ) : shown.length === 0 ? (
+        <p className="lead" role="status">No projects match. <button className="link linkbtn" onClick={() => { setKind("All"); setQ(""); }}>Clear filters</button></p>
       ) : (
-        <Reveal><ProjectRing projects={projects} /></Reveal>
+        <div className="grid-3">{list.map((p) => <ProjectCard key={p.link} p={p} />)}</div>
       )}
     </section>
   );
