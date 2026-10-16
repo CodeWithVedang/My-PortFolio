@@ -1,7 +1,5 @@
 import { FormEvent, useState } from "react";
 import { profile } from "../data/profile";
-import { Reveal } from "./Reveal";
-import { TiltCard } from "./TiltCard";
 
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbx9X_qUdIullPJ5Ze4fyLda2aClKIeCI4fRzVTIeeJ8WSI8ykm3fu2cSLLDNuVoeSDH/exec";
@@ -10,6 +8,14 @@ type Status = "idle" | "sending" | "success" | "error";
 
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* clipboard blocked: the mailto link still works */ }
+  };
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,20 +36,20 @@ export function Contact() {
 
   return (
     <section className="section container" id="contact">
-      <Reveal><h2 className="section-title"><small>05 /</small> Let's build something</h2></Reveal>
+      <h2>Contact</h2>
       <div className="contact-grid">
-        <Reveal>
-          <p className="lead">Hiring for a Software Developer, React/TypeScript or Test Automation role? I'd love to talk.</p>
+        <div>
+          <p className="lead">Hiring for a Software Developer or React/TypeScript role? I'd love to talk.</p>
           <p><a className="link big" href={`mailto:${profile.email}`}>{profile.email}</a></p>
           <p className="muted">{profile.location}</p>
           <div className="actions">
+            <button className="btn" onClick={copy}>{copied ? "Copied ✓" : "Copy email"}</button>
             <a className="btn" href={profile.links.resume} download="Vedang_Shelatkar_Resume.pdf">Download resume</a>
             <a className="btn btn-ghost" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a className="btn btn-ghost" href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-        </Reveal>
-        <Reveal delay={100}>
-          <TiltCard className="glass" max={4}>
+        </div>
+        <div className="card">
             <form className="form" onSubmit={onSubmit}>
               <label>Full name<input name="Full Name" required autoComplete="name" /></label>
               <label>Email<input name="Email Address" type="email" required autoComplete="email" /></label>
@@ -55,8 +61,7 @@ export function Contact() {
                 {status === "error" && "Could not send. Please try again or email me directly."}
               </p>
             </form>
-          </TiltCard>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

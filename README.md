@@ -20,7 +20,7 @@ A personal portfolio site to showcase skills, services, and projects in Full Sta
 
 ## 🛠️ Stack
 
-React 18 + TypeScript + Vite, three.js / @react-three/fiber for the 3D scene, CSS 3D for cards, globe and carousel. Projects live in `src/data/projects.json`, refreshed daily from Google Sheets by `update_projects.py` (GitHub Actions). Profile content lives in `src/data/profile.ts`.
+React 18 + TypeScript + Vite. Projects live in `src/data/projects.json`, refreshed daily from Google Sheets by `update_projects.py` (GitHub Actions). Profile content lives in `src/data/profile.ts`.
 
 ## 🧪 Run
 

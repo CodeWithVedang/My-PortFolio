@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codewithvedang.vercel.app/sitemap.xml
